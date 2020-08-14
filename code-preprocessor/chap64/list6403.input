@@ -1,0 +1,7 @@
+# Code Snippet 63-4
+NUM=1
+target$(NUM) : SRC=1
+target$(NUM) : source$(SRC)
+target2      : source$(NUM)
+target2      : source$(SRC)
+source       : target$(NUM)

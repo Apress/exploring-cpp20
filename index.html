@@ -1,0 +1,177 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- saved from url=(0046)http://www.cpphelp.com/exploring/exploring-20/ -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <title>Exploring C++ 20</title>
+    <meta name="author" content="Ray Lischner">
+    <meta name="created" content="2020-05-11T10:37:47.087174208">
+    <meta name="description" content="The code listings and snippets from the book, Exploring C++ 20, by Ray Lischner (Apress, 2020).">
+    <meta name="keywords" content="C++, C++ 20, computer programming, book, source code">
+    <style type="text/css">
+        .body {
+            max-width: 6in;
+        }
+        .author {
+            font-style: italic;
+        }
+        .header {
+            font-weight: bold;
+            padding-left: 3pt;
+            padding-right: 3pt;
+        }
+        .table {
+            display: table;
+        }
+        .chapter {
+            display: table-row;
+        }
+        .name {
+            display: table-cell;
+            text-align: left;
+        }
+        .import {
+            display: table-cell;
+            text-align: center;
+        }
+        .include {
+            display: table-cell;
+            text-align: center;
+        }
+    </style>
+<style type="text/css"></style></head>
+<body lang="en-US" dir="ltr">
+<a href="http://www.apress.com/9781484259603"><img src="./cover.png" width="117" height="168" align="left"></a>
+<h1>Exploring C++&nbsp;20</h1>
+<p class="author">by Ray Lischner</p>
+<div class="body">
+<p>This web site contains all the code listings from the book
+<i>Exploring C++&nbsp;20</i> (Apress).
+They are divided into two folders as follows:</p>
+
+<ul>
+    <li><p><code><a href="http://www.cpphelp.com/exploring/exploring-20/code-modules/">code-modules</a></code><br>
+    These files are extracted from the book verbatim.
+    They require full support for modules, including
+    import of standard library headers. Set the CMake variable <code>MODULES</code>
+    to <code>TRUE</code> in order to compile these files. At this time
+    (2020-07-10), no compiler release or prerelease can compile these
+    files. I will try to keep this site updated as compiler vendors
+    release more C++&nbsp;20 functionality.</p>
+    </li><li><p><code><a href="http://www.cpphelp.com/exploring/exploring-20/code-preprocessor">code-preprocessor</a></code><br>
+    These files are extracted from the book,
+    changing <code>import</code> <code>&lt;header&gt;;</code>
+    to <code>#include</code> <code>&lt;header&gt;</code>. Also module
+    declarations are commented out, as is the <code>export</code> keyword.
+    I provide header files to replace local modules.</p>
+</li></ul>
+
+<p>In each code folder is a subfolder for every chapter. Every
+chapter folder contains the files for that chapter, including
+<code>CMakeLists.txt</code> and test scripts. All files use POSIX
+line endings (newline only).</p>
+
+<p> To compile the examples, you will need <a href="https://cmake.org/">cmake</a>
+and, of course, a C++ compiler.
+As of 2020-07-10, no compiler and library implements the full C++&nbsp;20 draft standard.
+The <a href="https://gcc.gnu.org/">GCC</a> compiler and library are the most complete,
+and what I used when writing the book.</p>
+
+<p>As of GCC 10.1, libstdc++ provides all the parts of C++&nbsp;20
+that <i>Exploring C++&nbsp;20</i> requires except for modules
+and the <code>&lt;format&gt;</code> header.
+The <a href="https://fmt.dev/">fmt.dev</a> project implements a functional equivalent,
+albeit in the <code>fmt</code> namespace.
+In order to emulate the standard, I wrote my own
+<code><a href="http://www.cpphelp.com/exploring/exploring-20/format" type="text/c++">format</a></code> header
+to use the <code>fmt</code> library,
+although I actually used a smaller, simpler fork,
+called <a href="https://github.com/dbj-systems/fmt6">fmt6</a>.
+</p>
+
+<p>Except for Exploration 74, the tests rely on the
+<a href="http://www.cpphelp.com/exploring/exploring-20/run_test.py" type="text/python3">run_test.py</a> <a href="https://www.python.org/">Python&nbsp;3</a> script,
+as invoked from CMake tests.
+Some individual tests are themselves Python&nbsp;3 scripts.</p>
+
+<p> Download all files in a single <a href="http://www.cpphelp.com/exploring/exploring-20/exploring-cpp20.zip">ZIP file</a>
+or <a href="http://www.cpphelp.com/exploring/exploring-20/exploring-cpp20.tar.xz">compressed TAR file</a>.</p>
+</div>
+<div class="table">
+<div class="chapter"><span class="name header">Chapter</span><span class="import header">Modules and imports</span><span class="include header">Files and #include</span></div>
+<div class="chapter"><span class="name">Exploration 1: Honing Your Tools</span><span class="import"><a href="http://www.cpphelp.com/exploring/exploring-20/code-modules/chap01/">import</a></span><span class="include"><a href="http://www.cpphelp.com/exploring/exploring-20/code-preprocessor/chap01">#include</a></span></div>
+<div class="chapter"><span class="name">Exploration 2: Reading C++ Code</span><span class="import"><a href="http://www.cpphelp.com/exploring/exploring-20/code-modules/chap02/">import</a></span><span class="include"><a href="http://www.cpphelp.com/exploring/exploring-20/code-preprocessor/chap02">#include</a></span></div>
+<div class="chapter"><span class="name">Exploration 3: Integer Expressions</span><span class="import"><a href="http://www.cpphelp.com/exploring/exploring-20/code-modules/chap03/">import</a></span><span class="include"><a href="http://www.cpphelp.com/exploring/exploring-20/code-preprocessor/chap03">#include</a></span></div>
+<div class="chapter"><span class="name">Exploration 4: Strings</span><span class="import"><a href="http://www.cpphelp.com/exploring/exploring-20/code-modules/chap04/">import</a></span><span class="include"><a href="http://www.cpphelp.com/exploring/exploring-20/code-preprocessor/chap04">#include</a></span></div>
+<div class="chapter"><span class="name">Exploration 5: Simple Input</span><span class="import"><a href="http://www.cpphelp.com/exploring/exploring-20/code-modules/chap05/">import</a></span><span class="include"><a href="http://www.cpphelp.com/exploring/exploring-20/code-preprocessor/chap05">#include</a></span></div>
+<div class="chapter"><span class="name">Exploration 6: Error Messages</span><span class="import"><a href="http://www.cpphelp.com/exploring/exploring-20/code-modules/chap06/">import</a></span><span class="include"><a href="http://www.cpphelp.com/exploring/exploring-20/code-preprocessor/chap06">#include</a></span></div>
+<div class="chapter"><span class="name">Exploration 7: For Loops</span><span class="import"><a href="http://www.cpphelp.com/exploring/exploring-20/code-modules/chap07/">import</a></span><span class="include"><a href="http://www.cpphelp.com/exploring/exploring-20/code-preprocessor/chap07">#include</a></span></div>
+<div class="chapter"><span class="name">Exploration 8: Formatted Output</span><span class="import"><a href="http://www.cpphelp.com/exploring/exploring-20/code-modules/chap08/">import</a></span><span class="include"><a href="http://www.cpphelp.com/exploring/exploring-20/code-preprocessor/chap08">#include</a></span></div>
+<div class="chapter"><span class="name">Exploration 9: Arrays and Vectors</span><span class="import"><a href="http://www.cpphelp.com/exploring/exploring-20/code-modules/chap09/">import</a></span><span class="include"><a href="http://www.cpphelp.com/exploring/exploring-20/code-preprocessor/chap09">#include</a></span></div>
+<div class="chapter"><span class="name">Exploration 10: Algorithms and Ranges</span><span class="import"><a href="http://www.cpphelp.com/exploring/exploring-20/code-modules/chap10/">import</a></span><span class="include"><a href="http://www.cpphelp.com/exploring/exploring-20/code-preprocessor/chap10">#include</a></span></div>
+<div class="chapter"><span class="name">Exploration 11: Increment and Decrement</span><span class="import"><a href="http://www.cpphelp.com/exploring/exploring-20/code-modules/chap11/">import</a></span><span class="include"><a href="http://www.cpphelp.com/exploring/exploring-20/code-preprocessor/chap11">#include</a></span></div>
+<div class="chapter"><span class="name">Exploration 12: Conditions and Logic</span><span class="import"><a href="http://www.cpphelp.com/exploring/exploring-20/code-modules/chap12/">import</a></span><span class="include"><a href="http://www.cpphelp.com/exploring/exploring-20/code-preprocessor/chap12">#include</a></span></div>
+<div class="chapter"><span class="name">Exploration 13: Compound Statements</span><span class="import"><a href="http://www.cpphelp.com/exploring/exploring-20/code-modules/chap13/">import</a></span><span class="include"><a href="http://www.cpphelp.com/exploring/exploring-20/code-preprocessor/chap13">#include</a></span></div>
+<div class="chapter"><span class="name">Exploration 14: Introduction to File I/O</span><span class="import"><a href="http://www.cpphelp.com/exploring/exploring-20/code-modules/chap14/">import</a></span><span class="include"><a href="http://www.cpphelp.com/exploring/exploring-20/code-preprocessor/chap14">#include</a></span></div>
+<div class="chapter"><span class="name">Exploration 15: The Map Data Structure</span><span class="import"><a href="http://www.cpphelp.com/exploring/exploring-20/code-modules/chap15/">import</a></span><span class="include"><a href="http://www.cpphelp.com/exploring/exploring-20/code-preprocessor/chap15">#include</a></span></div>
+<div class="chapter"><span class="name">Exploration 16: Type Synonyms</span><span class="import"><a href="http://www.cpphelp.com/exploring/exploring-20/code-modules/chap16/">import</a></span><span class="include"><a href="http://www.cpphelp.com/exploring/exploring-20/code-preprocessor/chap16">#include</a></span></div>
+<div class="chapter"><span class="name">Exploration 17: Characters</span><span class="import"><a href="http://www.cpphelp.com/exploring/exploring-20/code-modules/chap17/">import</a></span><span class="include"><a href="http://www.cpphelp.com/exploring/exploring-20/code-preprocessor/chap17">#include</a></span></div>
+<div class="chapter"><span class="name">Exploration 18: Character Categories</span><span class="import"><a href="http://www.cpphelp.com/exploring/exploring-20/code-modules/chap18/">import</a></span><span class="include"><a href="http://www.cpphelp.com/exploring/exploring-20/code-preprocessor/chap18">#include</a></span></div>
+<div class="chapter"><span class="name">Exploration 19: Case-Folding</span><span class="import"><a href="http://www.cpphelp.com/exploring/exploring-20/code-modules/chap19/">import</a></span><span class="include"><a href="http://www.cpphelp.com/exploring/exploring-20/code-preprocessor/chap19">#include</a></span></div>
+<div class="chapter"><span class="name">Exploration 20: Writing Functions</span><span class="import"><a href="http://www.cpphelp.com/exploring/exploring-20/code-modules/chap20/">import</a></span><span class="include"><a href="http://www.cpphelp.com/exploring/exploring-20/code-preprocessor/chap20">#include</a></span></div>
+<div class="chapter"><span class="name">Exploration 21: Function Arguments</span><span class="import"><a href="http://www.cpphelp.com/exploring/exploring-20/code-modules/chap21/">import</a></span><span class="include"><a href="http://www.cpphelp.com/exploring/exploring-20/code-preprocessor/chap21">#include</a></span></div>
+<div class="chapter"><span class="name">Exploration 22: Using Ranges</span><span class="import"><a href="http://www.cpphelp.com/exploring/exploring-20/code-modules/chap22/">import</a></span><span class="include"><a href="http://www.cpphelp.com/exploring/exploring-20/code-preprocessor/chap22">#include</a></span></div>
+<div class="chapter"><span class="name">Exploration 23: Using Iterators</span><span class="import"><a href="http://www.cpphelp.com/exploring/exploring-20/code-modules/chap23/">import</a></span><span class="include"><a href="http://www.cpphelp.com/exploring/exploring-20/code-preprocessor/chap23">#include</a></span></div>
+<div class="chapter"><span class="name">Exploration 24: Unnamed Functions</span><span class="import"><a href="http://www.cpphelp.com/exploring/exploring-20/code-modules/chap24/">import</a></span><span class="include"><a href="http://www.cpphelp.com/exploring/exploring-20/code-preprocessor/chap24">#include</a></span></div>
+<div class="chapter"><span class="name">Exploration 25: Overloading Function Names</span><span class="import"><a href="http://www.cpphelp.com/exploring/exploring-20/code-modules/chap25/">import</a></span><span class="include"><a href="http://www.cpphelp.com/exploring/exploring-20/code-preprocessor/chap25">#include</a></span></div>
+<div class="chapter"><span class="name">Exploration 26: Big and Little Numbers</span><span class="import"><a href="http://www.cpphelp.com/exploring/exploring-20/code-modules/chap26/">import</a></span><span class="include"><a href="http://www.cpphelp.com/exploring/exploring-20/code-preprocessor/chap26">#include</a></span></div>
+<div class="chapter"><span class="name">Exploration 27: Very Big and Very Little Numbers</span><span class="import"><a href="http://www.cpphelp.com/exploring/exploring-20/code-modules/chap27/">import</a></span><span class="include"><a href="http://www.cpphelp.com/exploring/exploring-20/code-preprocessor/chap27">#include</a></span></div>
+<div class="chapter"><span class="name">Exploration 28: Documentation</span><span class="import"><a href="http://www.cpphelp.com/exploring/exploring-20/code-modules/chap28/">import</a></span><span class="include"><a href="http://www.cpphelp.com/exploring/exploring-20/code-preprocessor/chap28">#include</a></span></div>
+<div class="chapter"><span class="name">Exploration 29: Project 1: Body-Mass Index</span><span class="import"><a href="http://www.cpphelp.com/exploring/exploring-20/code-modules/chap29/">import</a></span><span class="include"><a href="http://www.cpphelp.com/exploring/exploring-20/code-preprocessor/chap29">#include</a></span></div>
+<div class="chapter"><span class="name">Exploration 30: Custom Types</span><span class="import"><a href="http://www.cpphelp.com/exploring/exploring-20/code-modules/chap30/">import</a></span><span class="include"><a href="http://www.cpphelp.com/exploring/exploring-20/code-preprocessor/chap30">#include</a></span></div>
+<div class="chapter"><span class="name">Exploration 31: Overloading Operators</span><span class="import"><a href="http://www.cpphelp.com/exploring/exploring-20/code-modules/chap31/">import</a></span><span class="include"><a href="http://www.cpphelp.com/exploring/exploring-20/code-preprocessor/chap31">#include</a></span></div>
+<div class="chapter"><span class="name">Exploration 32: Custom I/O Operators</span><span class="import"><a href="http://www.cpphelp.com/exploring/exploring-20/code-modules/chap32/">import</a></span><span class="include"><a href="http://www.cpphelp.com/exploring/exploring-20/code-preprocessor/chap32">#include</a></span></div>
+<div class="chapter"><span class="name">Exploration 33: Assignment and Initialization</span><span class="import"><a href="http://www.cpphelp.com/exploring/exploring-20/code-modules/chap33/">import</a></span><span class="include"><a href="http://www.cpphelp.com/exploring/exploring-20/code-preprocessor/chap33">#include</a></span></div>
+<div class="chapter"><span class="name">Exploration 34: Writing Classes</span><span class="import"><a href="http://www.cpphelp.com/exploring/exploring-20/code-modules/chap34/">import</a></span><span class="include"><a href="http://www.cpphelp.com/exploring/exploring-20/code-preprocessor/chap34">#include</a></span></div>
+<div class="chapter"><span class="name">Exploration 35: More About Member Functions</span><span class="import"><a href="http://www.cpphelp.com/exploring/exploring-20/code-modules/chap35/">import</a></span><span class="include"><a href="http://www.cpphelp.com/exploring/exploring-20/code-preprocessor/chap35">#include</a></span></div>
+<div class="chapter"><span class="name">Exploration 36: Access Levels</span><span class="import"><a href="http://www.cpphelp.com/exploring/exploring-20/code-modules/chap36/">import</a></span><span class="include"><a href="http://www.cpphelp.com/exploring/exploring-20/code-preprocessor/chap36">#include</a></span></div>
+<div class="chapter"><span class="name">Exploration 37: Understanding Object-Oriented Programming</span><span class="import"><a href="http://www.cpphelp.com/exploring/exploring-20/code-modules/chap37/">import</a></span><span class="include"><a href="http://www.cpphelp.com/exploring/exploring-20/code-preprocessor/chap37">#include</a></span></div>
+<div class="chapter"><span class="name">Exploration 38: Inheritance</span><span class="import"><a href="http://www.cpphelp.com/exploring/exploring-20/code-modules/chap38/">import</a></span><span class="include"><a href="http://www.cpphelp.com/exploring/exploring-20/code-preprocessor/chap38">#include</a></span></div>
+<div class="chapter"><span class="name">Exploration 39: Virtual Functions</span><span class="import"><a href="http://www.cpphelp.com/exploring/exploring-20/code-modules/chap39/">import</a></span><span class="include"><a href="http://www.cpphelp.com/exploring/exploring-20/code-preprocessor/chap39">#include</a></span></div>
+<div class="chapter"><span class="name">Exploration 40: Classes and Types</span><span class="import"><a href="http://www.cpphelp.com/exploring/exploring-20/code-modules/chap40/">import</a></span><span class="include"><a href="http://www.cpphelp.com/exploring/exploring-20/code-preprocessor/chap40">#include</a></span></div>
+<div class="chapter"><span class="name">Exploration 41: Declarations and Definitions</span><span class="import"><a href="http://www.cpphelp.com/exploring/exploring-20/code-modules/chap41/">import</a></span><span class="include"><a href="http://www.cpphelp.com/exploring/exploring-20/code-preprocessor/chap41">#include</a></span></div>
+<div class="chapter"><span class="name">Exploration 42: Modules</span><span class="import"><a href="http://www.cpphelp.com/exploring/exploring-20/code-modules/chap42/">import</a></span><span class="include"><a href="http://www.cpphelp.com/exploring/exploring-20/code-preprocessor/chap42">#include</a></span></div>
+<div class="chapter"><span class="name">Exploration 43: Old-Fashioned “Modules”</span><span class="import"><a href="http://www.cpphelp.com/exploring/exploring-20/code-modules/chap43/">import</a></span><span class="include"><a href="http://www.cpphelp.com/exploring/exploring-20/code-preprocessor/chap43">#include</a></span></div>
+<div class="chapter"><span class="name">Exploration 44: Function Objects</span><span class="import"><a href="http://www.cpphelp.com/exploring/exploring-20/code-modules/chap44/">import</a></span><span class="include"><a href="http://www.cpphelp.com/exploring/exploring-20/code-preprocessor/chap44">#include</a></span></div>
+<div class="chapter"><span class="name">Exploration 45: Useful Algorithms</span><span class="import"><a href="http://www.cpphelp.com/exploring/exploring-20/code-modules/chap45/">import</a></span><span class="include"><a href="http://www.cpphelp.com/exploring/exploring-20/code-preprocessor/chap45">#include</a></span></div>
+<div class="chapter"><span class="name">Exploration 46: More About Iterators</span><span class="import"><a href="http://www.cpphelp.com/exploring/exploring-20/code-modules/chap46/">import</a></span><span class="include"><a href="http://www.cpphelp.com/exploring/exploring-20/code-preprocessor/chap46">#include</a></span></div>
+<div class="chapter"><span class="name">Exploration 47: Ranges, Views, and Adaptors</span><span class="import"><a href="http://www.cpphelp.com/exploring/exploring-20/code-modules/chap47/">import</a></span><span class="include"><a href="http://www.cpphelp.com/exploring/exploring-20/code-preprocessor/chap47">#include</a></span></div>
+<div class="chapter"><span class="name">Exploration 48: Exceptions</span><span class="import"><a href="http://www.cpphelp.com/exploring/exploring-20/code-modules/chap48/">import</a></span><span class="include"><a href="http://www.cpphelp.com/exploring/exploring-20/code-preprocessor/chap48">#include</a></span></div>
+<div class="chapter"><span class="name">Exploration 49: More Operators</span><span class="import"><a href="http://www.cpphelp.com/exploring/exploring-20/code-modules/chap49/">import</a></span><span class="include"><a href="http://www.cpphelp.com/exploring/exploring-20/code-preprocessor/chap49">#include</a></span></div>
+<div class="chapter"><span class="name">Exploration 50: Project 2: Fixed-Point Numbers</span><span class="import"><a href="http://www.cpphelp.com/exploring/exploring-20/code-modules/chap50/">import</a></span><span class="include"><a href="http://www.cpphelp.com/exploring/exploring-20/code-preprocessor/chap50">#include</a></span></div>
+<div class="chapter"><span class="name">Exploration 51: Function Templates</span><span class="import"><a href="http://www.cpphelp.com/exploring/exploring-20/code-modules/chap51/">import</a></span><span class="include"><a href="http://www.cpphelp.com/exploring/exploring-20/code-preprocessor/chap51">#include</a></span></div>
+<div class="chapter"><span class="name">Exploration 52: Class Templates</span><span class="import"><a href="http://www.cpphelp.com/exploring/exploring-20/code-modules/chap52/">import</a></span><span class="include"><a href="http://www.cpphelp.com/exploring/exploring-20/code-preprocessor/chap52">#include</a></span></div>
+<div class="chapter"><span class="name">Exploration 53: Template Specialization</span><span class="import"><a href="http://www.cpphelp.com/exploring/exploring-20/code-modules/chap53/">import</a></span><span class="include"><a href="http://www.cpphelp.com/exploring/exploring-20/code-preprocessor/chap53">#include</a></span></div>
+<div class="chapter"><span class="name">Exploration 54: Partial Template Specialization</span><span class="import"><a href="http://www.cpphelp.com/exploring/exploring-20/code-modules/chap54/">import</a></span><span class="include"><a href="http://www.cpphelp.com/exploring/exploring-20/code-preprocessor/chap54">#include</a></span></div>
+<div class="chapter"><span class="name">Exploration 55: Template Constraints</span><span class="import"><a href="http://www.cpphelp.com/exploring/exploring-20/code-modules/chap55/">import</a></span><span class="include"><a href="http://www.cpphelp.com/exploring/exploring-20/code-preprocessor/chap55">#include</a></span></div>
+<div class="chapter"><span class="name">Exploration 56: Names and Namespaces</span><span class="import"><a href="http://www.cpphelp.com/exploring/exploring-20/code-modules/chap56/">import</a></span><span class="include"><a href="http://www.cpphelp.com/exploring/exploring-20/code-preprocessor/chap56">#include</a></span></div>
+<div class="chapter"><span class="name">Exploration 57: Containers</span><span class="import"><a href="http://www.cpphelp.com/exploring/exploring-20/code-modules/chap57/">import</a></span><span class="include"><a href="http://www.cpphelp.com/exploring/exploring-20/code-preprocessor/chap57">#include</a></span></div>
+<div class="chapter"><span class="name">Exploration 58: Locales and Facets</span><span class="import"><a href="http://www.cpphelp.com/exploring/exploring-20/code-modules/chap58/">import</a></span><span class="include"><a href="http://www.cpphelp.com/exploring/exploring-20/code-preprocessor/chap58">#include</a></span></div>
+<div class="chapter"><span class="name">Exploration 59: International Characters</span><span class="import"><a href="http://www.cpphelp.com/exploring/exploring-20/code-modules/chap59/">import</a></span><span class="include"><a href="http://www.cpphelp.com/exploring/exploring-20/code-preprocessor/chap59">#include</a></span></div>
+<div class="chapter"><span class="name">Exploration 60: Text I/O</span><span class="import"><a href="http://www.cpphelp.com/exploring/exploring-20/code-modules/chap60/">import</a></span><span class="include"><a href="http://www.cpphelp.com/exploring/exploring-20/code-preprocessor/chap60">#include</a></span></div>
+<div class="chapter"><span class="name">Exploration 61: Project 3: Currency Type</span><span class="import"><a href="http://www.cpphelp.com/exploring/exploring-20/code-modules/chap61/">import</a></span><span class="include"><a href="http://www.cpphelp.com/exploring/exploring-20/code-preprocessor/chap61">#include</a></span></div>
+<div class="chapter"><span class="name">Exploration 62: Pointers</span><span class="import"><a href="http://www.cpphelp.com/exploring/exploring-20/code-modules/chap62/">import</a></span><span class="include"><a href="http://www.cpphelp.com/exploring/exploring-20/code-preprocessor/chap62">#include</a></span></div>
+<div class="chapter"><span class="name">Exploration 63: Regular Expressions</span><span class="import"><a href="http://www.cpphelp.com/exploring/exploring-20/code-modules/chap63/">import</a></span><span class="include"><a href="http://www.cpphelp.com/exploring/exploring-20/code-preprocessor/chap63">#include</a></span></div>
+<div class="chapter"><span class="name">Exploration 64: Moving Data with Rvalue References</span><span class="import"><a href="http://www.cpphelp.com/exploring/exploring-20/code-modules/chap64/">import</a></span><span class="include"><a href="http://www.cpphelp.com/exploring/exploring-20/code-preprocessor/chap64">#include</a></span></div>
+<div class="chapter"><span class="name">Exploration 65: Smart Pointers</span><span class="import"><a href="http://www.cpphelp.com/exploring/exploring-20/code-modules/chap65/">import</a></span><span class="include"><a href="http://www.cpphelp.com/exploring/exploring-20/code-preprocessor/chap65">#include</a></span></div>
+<div class="chapter"><span class="name">Exploration 66: Files and File Names</span><span class="import"><a href="http://www.cpphelp.com/exploring/exploring-20/code-modules/chap66/">import</a></span><span class="include"><a href="http://www.cpphelp.com/exploring/exploring-20/code-preprocessor/chap66">#include</a></span></div>
+<div class="chapter"><span class="name">Exploration 67: Working with Bits</span><span class="import"><a href="http://www.cpphelp.com/exploring/exploring-20/code-modules/chap67/">import</a></span><span class="include"><a href="http://www.cpphelp.com/exploring/exploring-20/code-preprocessor/chap67">#include</a></span></div>
+<div class="chapter"><span class="name">Exploration 68: Enumerations</span><span class="import"><a href="http://www.cpphelp.com/exploring/exploring-20/code-modules/chap68/">import</a></span><span class="include"><a href="http://www.cpphelp.com/exploring/exploring-20/code-preprocessor/chap68">#include</a></span></div>
+<div class="chapter"><span class="name">Exploration 69: Multiple Inheritance</span><span class="import"><a href="http://www.cpphelp.com/exploring/exploring-20/code-modules/chap69/">import</a></span><span class="include"><a href="http://www.cpphelp.com/exploring/exploring-20/code-preprocessor/chap69">#include</a></span></div>
+<div class="chapter"><span class="name">Exploration 70: Concepts, Traits, and Policies</span><span class="import"><a href="http://www.cpphelp.com/exploring/exploring-20/code-modules/chap70/">import</a></span><span class="include"><a href="http://www.cpphelp.com/exploring/exploring-20/code-preprocessor/chap70">#include</a></span></div>
+<div class="chapter"><span class="name">Exploration 71: Names, Namespaces, and Templates</span><span class="import"><a href="http://www.cpphelp.com/exploring/exploring-20/code-modules/chap71/">import</a></span><span class="include"><a href="http://www.cpphelp.com/exploring/exploring-20/code-preprocessor/chap71">#include</a></span></div>
+<div class="chapter"><span class="name">Exploration 72: Overloaded Functions and Operators</span><span class="import"><a href="http://www.cpphelp.com/exploring/exploring-20/code-modules/chap72/">import</a></span><span class="include"><a href="http://www.cpphelp.com/exploring/exploring-20/code-preprocessor/chap72">#include</a></span></div>
+<div class="chapter"><span class="name">Exploration 73: Programming at Compile Time</span><span class="import"><a href="http://www.cpphelp.com/exploring/exploring-20/code-modules/chap73/">import</a></span><span class="include"><a href="http://www.cpphelp.com/exploring/exploring-20/code-preprocessor/chap73">#include</a></span></div>
+<div class="chapter"><span class="name">Exploration 74: Project 4: Calculator</span><span class="import"><a href="http://www.cpphelp.com/exploring/exploring-20/code-modules/chap74/">import</a></span><span class="include"><a href="http://www.cpphelp.com/exploring/exploring-20/code-preprocessor/chap74">#include</a></span></div>
+</div>
+
+</body></html>

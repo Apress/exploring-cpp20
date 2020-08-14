@@ -1,0 +1,23 @@
+#!/usr/bin/env python3
+# First line of output is the current time, so it will alway vary.
+# Normalize the time and compare.
+
+import os,sys
+program, name, source_dir, build_dir = sys.argv
+
+from subprocess import run,PIPE,STDOUT
+p = run([os.path.join(build_dir, name)], stdout=PIPE, stderr=STDOUT)
+actual = p.stdout.decode('utf-8').splitlines(True)
+
+with open(os.path.join(source_dir, name + ".expected"), 'rt') as f:
+	expected = f.readlines()
+
+# Normalize time. The first line should be an integer.
+int(actual[0])
+actual[0] = 'now\n'
+
+if expected != actual:
+	import difflib
+	for line in difflib.context_diff(expected, actual, "Expected", "Actual"):
+		sys.stdout.write(line)
+	sys.exit(1)

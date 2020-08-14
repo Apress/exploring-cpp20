@@ -1,0 +1,8 @@
+/** @file snip1901.txt */
+/** Code Snippet 19-1 */
+std::isupper('A', std::locale{"en_US.latin1"}) == true
+std::islower('A', std::locale{"en_US.latin1"}) == false
+std::isupper('Æ', std::locale{"en_US.latin1"}) == true
+std::islower('Æ', std::locale{"en_US.latin1"}) == false
+std::islower('½', std::locale{"en_US.latin1"}) == false
+std::isupper('½', std::locale{"en_US.latin1"}) == false

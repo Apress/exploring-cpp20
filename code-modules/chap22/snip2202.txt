@@ -1,0 +1,5 @@
+/** @file snip2202.txt */
+/** Code Snippet 22-2 */
+5
+7
+9

@@ -1,0 +1,5 @@
+data1: { 1 2 3 4 5 }
+data2: { 1 2 3 }
+equal(data1, data2) = false
+mismatch(data1, data2) = index -13
+lex_comp(data1, data2) = false

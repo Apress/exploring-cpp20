@@ -1,0 +1,8 @@
+example(list3301 list3301.hh)
+example(list3302 list3302.hh)
+example(list3303 list3303.hh)
+example(list3304 list3304.hh)
+example(list3305)
+example(snip3301 snip3301.hh)
+example(snip3302 snip3302.hh)
+include_directories(..)

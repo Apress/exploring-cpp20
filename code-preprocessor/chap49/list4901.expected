@@ -1,0 +1,6 @@
+2/1
+-2/1
+-2/1
+2/1
+terminate called after throwing an instance of 'rational::zero_denominator'
+  what():  0 denominator

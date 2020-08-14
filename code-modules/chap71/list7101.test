@@ -1,0 +1,3 @@
+abs(origin) = 0
+abs(unit) = 1
+*ptr = (1, 1, 1)

@@ -1,0 +1,7 @@
+random access or contiguous advance
+deque: 2
+bidirectional iterator
+list: 2
+random access or contiguous advance
+vector: 2
+istream: 0

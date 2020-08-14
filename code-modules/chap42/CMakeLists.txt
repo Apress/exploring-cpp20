@@ -1,0 +1,7 @@
+example(list4202 list4201.cc)
+example(list4203 list4203.cc)
+example(list4204 list4204.cc)
+example(list4206 list4206.cc list4205.cc)
+example(list4207 stats.cc list4207.cc)
+example(list4211 list4210.cc list4209.cc list4208.cc)
+set_source_files_properties(list4209.cc list4210.cc PROPERTIES OBJECT_DEPENDS ${CMAKE_CURRENT_SOURCE_DIR}/list4208.cc)

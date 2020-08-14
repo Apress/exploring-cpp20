@@ -1,0 +1,3 @@
+/** @file snip0303.txt */
+/** Code Snippet 3-3 */
+list0301 < NUL

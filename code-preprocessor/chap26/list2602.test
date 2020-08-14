@@ -1,0 +1,5 @@
+bits per int = 32
+bits per bool = 1
+bits per short int = 16
+bits per long int = 64
+bits per long long int = 64

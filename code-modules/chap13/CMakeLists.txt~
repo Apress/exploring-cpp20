@@ -1,0 +1,6 @@
+example(list1302)
+example(list1303)
+example(list1304)
+example(snip1303 snip1303.hh)
+example(snip1304 snip1304.hh "$<$<CXX_COMPILER_ID:GNU,Clang>:-Wno-unused-value>")
+example(snip1306 snip1306.hh)

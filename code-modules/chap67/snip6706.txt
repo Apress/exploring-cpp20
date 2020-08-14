@@ -1,0 +1,5 @@
+/** @file snip6706.txt */
+/** Code Snippet 67-6 */
+1234u
+4321UL
+0xFFFFLu

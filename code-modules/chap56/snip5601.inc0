@@ -1,0 +1,3 @@
+public:
+rational() {}
+rational(T,T) {}

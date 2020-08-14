@@ -1,0 +1,3 @@
+/** @file snip1001.txt */
+/** Code Snippet 10-1 */
+10 42 3 1 42 5 3 10 3

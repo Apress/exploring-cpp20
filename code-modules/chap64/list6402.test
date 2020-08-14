@@ -1,0 +1,7 @@
+mystring()
+mystring move("one")
+mystring move("two")
+mystring move("one")
+mystring move("three")
+mystring move("one")
+mystring move("two")

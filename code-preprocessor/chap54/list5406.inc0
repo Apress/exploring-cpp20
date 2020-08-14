@@ -1,0 +1,8 @@
+// ... and so on...
+void print(std::ostream& stream)
+const
+{
+   stream << value_ / places10;
+   if (auto f = value_ % places10)
+     stream << '.' << std::setw(places) << std::setfill('0') << std::right << f;
+}

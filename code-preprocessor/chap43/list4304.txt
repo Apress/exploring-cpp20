@@ -1,0 +1,6 @@
+/** @file list4304.txt */
+/** Listing 43-4. Creating a Module From a Header */
+// export module rat;
+/*export*/ {
+    #include "rational.hpp"
+}

@@ -1,0 +1,5 @@
+//   ...omitted for brevity...
+
+void reduce() {}
+
+T numerator_, denominator_;

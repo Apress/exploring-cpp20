@@ -1,0 +1,7 @@
+other::other()
+other::operator convert()
+convert()
+demo(convert)
+operator+(int,demo)
+demo(int)
+operator+(demo,demo)

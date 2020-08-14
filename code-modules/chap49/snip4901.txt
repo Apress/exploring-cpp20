@@ -1,0 +1,3 @@
+/** @file snip4901.txt */
+/** Code Snippet 49-1 */
+condition ? true-part : false-part

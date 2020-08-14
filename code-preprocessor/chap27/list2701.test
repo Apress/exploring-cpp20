@@ -1,0 +1,26 @@
+#!/usr/bin/env python3
+# Expect the program to fail.
+
+import os, sys
+program, name, source_dir, build_dir = sys.argv
+
+from subprocess import Popen,PIPE,STDOUT
+p = Popen([os.path.join(build_dir, name)], stdout=PIPE, stderr=STDOUT)
+stdout, _ = p.communicate()
+
+if p.returncode == 0:
+	print("$name exited with success, but expected failure")
+	sys.exit(2)
+else:
+	with open(os.path.join(source_dir, "list2701.txt"), 'rb') as f:
+		expected = f.readlines()
+	# The assertion contains the full path to the source file.
+	# Normalize by replacing with SOURCE.
+	source_dir = os.path.abspath(source_dir).encode('utf-8')
+	actual = [line.replace(source_dir, b"SOURCE") for line in stdout.splitlines(True)]
+
+	if expected != actual:
+		import difflib
+		for line in difflib.diff_bytes(difflib.unified_diff, expected, actual, b'Expected', b'Actual'):
+			sys.stdout.write(line.decode('latin1'))
+		sys.exit(1)

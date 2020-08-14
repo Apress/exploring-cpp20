@@ -1,0 +1,4 @@
+int: 1
+enum: 2
+float: 3
+str: string

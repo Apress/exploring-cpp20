@@ -1,0 +1,6 @@
+{ 1 2 2 3 4 4 4 5 6 7 9 }
+bounds of 3: { 3, 4 }
+bounds of 4: { 4, 7 }
+bounds of 8: { 10, 10 }
+bounds of 0: { 0, 0 }
+bounds of 10: { 11, 11 }

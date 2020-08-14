@@ -1,0 +1,2 @@
+int >> 15 = -1 = 0xffffffff
+unsigned >> 15 = 131071 = 0x01ffff

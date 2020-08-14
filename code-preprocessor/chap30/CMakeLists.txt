@@ -1,0 +1,8 @@
+example(list3001 list3001.hh)
+example(list3002)
+example(list3003)
+example(list3004)
+example(list3005)
+example(list3006 list3006.hh)
+example(snip3001 snip3001.hh)
+example(snip3002 snip3002.hh)

@@ -1,0 +1,47 @@
+#!/usr/bin/env python3
+
+import os,sys
+program, name, source_dir, build_dir = sys.argv
+
+def drop_left(line):
+	"Erase the left column"
+	return b' '.join(line.lstrip().split(b' ')[1:])
+
+# Test 1
+from subprocess import run,PIPE,STDOUT
+p = run(['find', os.path.join(build_dir, 'Testing'), '-exec', 'ls', '--time-style=+%Y-%m-%d %H:%M:%S', '-ld', '--file-type', '{}', ';'], stdout=PIPE, stderr=PIPE)
+if p.returncode != 0 or p.stderr:
+	print(p.stderr, file=sys.stderr)
+	print("Return code =", p.returncode, file=sys.stderr)
+	sys.exit(3)
+# Skip file modes, owner, and size
+expected = [drop_left(line[23:]) for line in p.stdout.splitlines(True)]
+expected.sort()
+
+p = run([os.path.join(build_dir, name), os.path.join(build_dir, 'Testing')], stdout=PIPE, stderr=PIPE)
+if p.returncode != 0 or p.stderr:
+	print(p.stderr, file=sys.stderr)
+	print("Return code =", p.returncode, file=sys.stderr)
+	sys.exit(4)
+# Drop size because list6604 interprets size of directories differently from ls.
+actual = [drop_left(line) for line in p.stdout.splitlines(True)]
+actual.sort()
+
+if expected != actual:
+	import difflib
+	diffs = difflib.diff_bytes(difflib.context_diff, expected, actual, b'Expected', b'Actual')
+	for line in diffs:
+		sys.stdout.write(line.decode('latin1'))
+	sys.exit(1)
+
+# Test 2
+expected = [b'error: No such file or directory\n']
+p = run([os.path.join(build_dir, name), 'error'], stdout=PIPE, stderr=STDOUT)
+actual = p.stdout.splitlines(True)
+
+if expected != actual:
+	import difflib
+	diffs = difflib.diff_bytes(difflib.context_diff, expected, actual, b'Expected', b'Actual')
+	for line in diffs:
+		sys.stdout.write(line.decode('latin1'))
+	sys.exit(2)

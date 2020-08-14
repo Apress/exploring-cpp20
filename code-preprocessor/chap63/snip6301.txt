@@ -1,0 +1,3 @@
+/** @file snip6301.txt */
+/** Code Snippet 63-1 */
+^[ \t]*(\S+)[ \t]+(\S+)[ \t]*$

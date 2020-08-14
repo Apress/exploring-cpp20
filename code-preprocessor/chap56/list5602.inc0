@@ -1,0 +1,6 @@
+//     ... copied from Exploration 51...
+public:
+void operator+=(fixed const&)
+{}
+
+fixed(T,T) {}

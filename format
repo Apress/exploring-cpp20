@@ -1,0 +1,47 @@
+#ifndef FORMAT_HPP_
+#define FORMAT_HPP_
+
+#include <chrono>
+#include <filesystem>
+
+#define FMT_HEADER_ONLY 1
+#include "fmt6/format.h"
+#include "fmt6/chrono.h"
+#include "fmt6/ranges.h"
+
+namespace std {
+	// Following are the only two identifiers that Exploring C++ 20
+	// uses from <format>. Other uses may requiring additional
+	// using declarations.
+	using fmt::v6::format;
+	using fmt::v6::format_to;
+}
+
+#ifndef __cpp_lib_format
+#define __cpp_lib_format 201907L
+#endif
+
+FMT_BEGIN_NAMESPACE
+	// fmt/chrono.h does not support file_time_type, so specialize formatter<>
+	// to delegate directly to a type that is supported, namely struct tm.
+	template <>
+	struct formatter<std::filesystem::file_time_type> : formatter<std::tm> {
+		using super = formatter<std::tm>;
+
+		template <typename FormatContext>
+		auto format(std::filesystem::file_time_type time, FormatContext& ctx) {
+			// Convert file_time to sys_time
+			auto systime{ std::chrono::file_clock::to_sys(time) };
+			// Convert a sys_time::time_point to time_t (seconds since the epoch)
+			auto secs{ std::chrono::system_clock::to_time_t(systime) };
+			// Convert time_t to struct tm.
+			tm tmparts;
+			localtime_r(&secs, &tmparts);
+			// Format the struct tm.
+			return super::format(tmparts, ctx);
+		}
+	};
+
+FMT_END_NAMESPACE
+
+#endif // FORMAT_HPP_

@@ -1,0 +1,3 @@
+/** @file snip1305.txt */
+/** Code Snippet 13-5 */
+{ statement* }

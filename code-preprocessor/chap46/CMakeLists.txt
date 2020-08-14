@@ -1,0 +1,8 @@
+example(list4601)
+example(list4602)
+example(list4603)
+example(list4605)
+example(list4607)
+example(snip4601 snip4601.hh)
+example(snip4602 snip4602.hh)
+include_directories(. ../chap45 ../chap44)

@@ -1,0 +1,4 @@
+/** @file snip2605.txt */
+/** Code Snippet 26-5 */
+static_cast<signed char>(-1)
+static_cast<short int>(42)

@@ -1,0 +1,22 @@
+/** @file list2304.cpp */
+/** Listing 23-4. Sorting into Descending Order */
+import <algorithm>;
+import <iostream>;
+import <iterator>;
+import <vector>;
+
+/** Predicate for sorting into descending order. */
+int descending(int a, int b)
+{
+  return a > b;
+}
+
+int main()
+{
+  std::vector<int> data{ std::istream_iterator<int>(std::cin),
+                         std::istream_iterator<int>() };
+
+  std::sort(data.begin(), data.end(), descending);
+
+  std::copy(data.begin(), data.end(), std::ostream_iterator<int>(std::cout, "\n"));
+}

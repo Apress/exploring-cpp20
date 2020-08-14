@@ -1,0 +1,96 @@
+#!/usr/bin/env python3
+
+"""
+Run test for Exploring C++ 20, chapter 14.
+Listing 14-N reads from the file "list140N.in".
+Test error-handling by setting directory to /, where we know
+the file does not exist.
+Test normal use by copying the file and verifying the result.
+
+Listing 14-1 writes to stdout.
+Listing 14-2 and 14-3 write to list140N.out.
+"""
+
+def run_program(path):
+	"Runs a program with no input and returns (stdout, stderr) tuple."
+	from subprocess import Popen,PIPE
+	p = Popen([path], stdout=PIPE, stderr=PIPE)
+	return p.communicate()
+
+def compare(expected, actual):
+	"""
+	Compares two lists of strings.
+	Returns True for same, False for differences.
+	If there are any differences, prints the diff to stdout.
+	"""
+	if expected == actual:
+		return True
+	else:
+		import difflib
+		for line in difflib.diff_bytes(difflib.context_diff, expected, actual, b'Expected', b'Actual'):
+			sys.stdout.write(line.decode('latin1'))
+		return False
+
+def readlines(filename):
+	"""
+	Reads filename and returns a list of lines from the file.
+	Line endings are preserved.
+	Raises an exception for IOErrors.
+	"""
+	with open(filename, 'rb') as f:
+		return f.readlines()
+
+def test(path, output_file, expected_output, expected_error):
+	"""
+	Runs a test.
+	Runs path and compares the output with expected_output
+	and error output with expected_error.
+	If output_file is None, the actual output is obtained
+	from stdout. Otherwise, output_file is the name of a file
+	that will contain the actual output after the program finishes.
+	"""
+	stdout, stderr = run_program(path)
+
+	# If there is unexpected error output, print the diff.
+	if not compare(expected_error, stderr.splitlines(True)):
+		return False
+
+	if output_file:
+		actual_output = readlines(output_file)
+	else:
+		actual_output = stdout.splitlines(True)
+	return compare(expected_output, actual_output)
+
+def main(name, source_dir, build_dir):
+	import os
+
+	if name == 'list1401':
+		output_file = None
+	else:
+		output_file = os.path.join(build_dir, name + '.out')
+		if os.path.exists(output_file):
+			os.unlink(output_file)
+
+	expected = []
+	input_file = os.path.join(source_dir, name + '.in')
+	for line in readlines(input_file):
+		expected.extend(['{0}\n'.format(int(token)).encode('latin1') for token in line.split()])
+
+	if source_dir != build_dir:
+		# Copy the input file into the build directory.
+		import shutil
+		shutil.copyfile(input_file, os.path.join(build_dir, name + '.in'))
+
+	path = os.path.join(build_dir, name)
+	okay = test(path, output_file, expected, [])
+	os.chdir("/")
+	okay = test(path, None, [], [name.encode('latin1') + b'.in: No such file or directory\n']) and okay
+	return okay
+
+if __name__ == "__main__":
+	import sys
+	if len(sys.argv) != 4:
+		print("Invoke this script from the run_test script.", file=sys.stderr)
+		sys.exit(2)
+	if not main(sys.argv[1], sys.argv[2], sys.argv[3]):
+		sys.exit(1)

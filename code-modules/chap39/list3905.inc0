@@ -1,0 +1,12 @@
+// ... omitted for brevity ...
+#include "list3901.hh"
+
+#ifndef OUTPUT_FUNCTION
+#define OUTPUT_FUNCTION "list3903.hh"
+#endif
+#include OUTPUT_FUNCTION
+
+#ifndef MOVIE_CLASS
+#define MOVIE_CLASS "list3904.hh"
+#endif
+#include MOVIE_CLASS

@@ -1,0 +1,8 @@
+random access+ iterator
+deque: 2
+input+ iterator
+list: 3
+random access+ iterator
+vector: 2
+input+ iterator
+istream: 0

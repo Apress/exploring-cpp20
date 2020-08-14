@@ -1,0 +1,27 @@
+Enter threshold BMI: Enter name, height (in cm), and weight (in kg) for each person:
+Name 1: Height (cm): Weight (kg): Sex (M or F): BMI = 27
+Name 2: Height (cm): Weight (kg): Sex (M or F): BMI = 29
+Name 3: Height (cm): Weight (kg): Sex (M or F): BMI = 22
+Name 4: Height (cm): Weight (kg): Sex (M or F): BMI = 24
+Name 5: Height (cm): Weight (kg): Sex (M or F): BMI = 20
+Name 6: 
+
+Male data
+Ht(cm) Wt(kg) Sex  BMI  Name
+   180     90M      27
+* Ray Lischner
+    30      2M      22
+  Mick E. Mouse
+   150     55M      24
+  A. Nony Lischner
+Mean BMI = 24.3
+Median BMI = 24
+
+Female data
+Ht(cm) Wt(kg) Sex  BMI  Name
+   120     42F      29
+* A. Nony Mouse
+   250    130F      20
+  No One
+Mean BMI = 24.5
+Median BMI = 24.5

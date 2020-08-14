@@ -1,0 +1,9 @@
+not alpha
+lower: string.
+upper: STRING.
+not alpha
+lower: 123
+upper: 123
+alpha
+lower: testing
+upper: TESTING

@@ -1,0 +1,3 @@
+/** @file snip6302.txt */
+/** Code Snippet 63-2 */
+^[ \t]*(\S+)[ \t]*:[ \t]*(\S+)[ \t]*$

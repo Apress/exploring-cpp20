@@ -1,0 +1,43 @@
+#!/usr/bin/env python3
+
+import os,sys
+program, name, source_dir, build_dir = sys.argv
+
+# Test 1
+from glob import glob
+files = glob(os.path.join(source_dir, '*.cpp'))
+
+from subprocess import run,PIPE,STDOUT
+p = run(['ls', '--time-style=+%Y-%m-%d %H:%M:%S', '-l', '--file-type'] + files, stdout=PIPE, stderr=PIPE)
+if p.returncode != 0 or p.stderr:
+	print(p.stderr, file=sys.stderr)
+	print("Return code =", p.returncode, file=sys.stderr)
+	sys.exit(3)
+# Skip file modes and owner
+expected = [line[23:].strip() for line in p.stdout.splitlines(True)]
+
+p = run([os.path.join(build_dir, name)] + files, stdout=PIPE, stderr=PIPE)
+if p.returncode != 0 or p.stderr:
+	print(p.stderr, file=sys.stderr)
+	print("Return code =", p.returncode, file=sys.stderr)
+	sys.exit(4)
+actual = [line.strip() for line in p.stdout.splitlines(True)]
+
+if expected != actual:
+	import difflib
+	diffs = difflib.diff_bytes(difflib.context_diff, expected, actual, b'Expected', b'Actual')
+	for line in diffs:
+		sys.stdout.write(line.decode('latin1'))
+	sys.exit(1)
+
+# Test 2
+expected = [b'error: No such file or directory\n']
+p = run([os.path.join(build_dir, name), 'error'], stdout=PIPE, stderr=STDOUT)
+actual = p.stdout.splitlines(True)
+
+if expected != actual:
+	import difflib
+	diffs = difflib.diff_bytes(difflib.context_diff, expected, actual, b'Expected', b'Actual')
+	for line in diffs:
+		sys.stdout.write(line.decode('latin1'))
+	sys.exit(2)

@@ -1,0 +1,7 @@
+mystring()
+mystring copy("one")
+mystring copy("two")
+mystring copy("one")
+mystring copy("three")
+mystring copy("one")
+mystring copy("two")

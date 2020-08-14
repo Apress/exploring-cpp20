@@ -1,0 +1,5 @@
+example(list2801)
+example(snip2801 snip2801.hh)
+example(snip2802 snip2802.hh)
+example(snip2803 snip2803.hh)
+example(snip2804 snip2804.hh)

@@ -1,0 +1,14 @@
+min=1.17549e-38
+max=3.40282e+38
+IEC 60559? true
+max exponent=128
+min exponent=-125
+mantissa places=24
+radix=2
+has infinity? true
+has quiet NaN? true
+has signaling NaN? true
+1.0/0.0 = infinity
+infinity + infinity = infinity
+zero/zero = -nan
+inf/inf = -nan

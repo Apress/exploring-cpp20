@@ -1,0 +1,3 @@
+/** @file snip0501.txt */
+/** Code Snippet 5-1 */
+42*21

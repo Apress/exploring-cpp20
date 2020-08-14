@@ -1,0 +1,6 @@
+//     ... you know what goes here...
+public:
+void operator+=(rational const&) {}
+
+rational() {}
+rational(T,T) {}

@@ -1,0 +1,248 @@
+EXPLORATION 15
+
+The Map Data Structure
+
+Now that you understand the basics, it's time to move on to more
+exciting challenges. Let's write a real program—something nontrivial
+but still simple enough to master this early in the book. Your task is
+to write a program that reads words and counts the frequency of each
+unique word. For the sake of simplicity, a word is a string of
+non-space characters separated by white space. Be aware, however, that
+by this definition, words end up including punctuation characters, but
+we'll worry about fixing that problem later.
+
+This is a complicated program, touching on everything you've learned
+about C++ so far. If you want to exercise your new understanding of
+file I/O, read from a named file. If you prefer the simplicity, read
+from the standard input. Before jumping in and trying to write a
+program, take a moment to think about the problem and the tools you
+need to solve it. Write pseudo-code for the program. Try to write C++
+code where you can, and make up whatever else you need to tackle the
+problem. Keep it simple—and don't dwell on trying to get syntax details
+correct.
+
+Using Maps
+
+The title of this Exploration tells you what C++ feature will help
+provide an easy solution to this problem. What C++ calls a map, some
+languages and libraries call a dictionary or association. A map is
+simply a data structure that stores pairs of keys and values, indexed
+by the key. In other words, it maps a key to a value. Within a map,
+keys are unique. The map stores keys in ascending order. Thus, the
+heart of the program is a map that stores strings as keys and number of
+occurrences as the associated value for each key. Naturally, your
+program needs the <map> header. The map datatype is called std::map. To
+define a map, you need to specify the key and value type within angle
+brackets (separated by a comma), as shown in the following example:
+
+std::map<std::string, int> counts;
+
+You can use almost any type as the
+key and value types, even another map. As with vector, if you do not
+initialize a map, it starts out empty. The simplest way to use a map is
+to look up values using square brackets. For example, counts["the"]
+returns the value associated with the key, "the". If the key is not
+present in the map, it is added with an initial value of zero. If the
+value type were std::string, the initial value would be an empty
+string. Armed with this knowledge, you can write the first part of the
+program—collecting the word counts—as shown in Listing 15-1. (Feel free
+to modify the program to read from a named file, as you learned in
+Exploration 14.)
+
+Listing 15-1. Counting Occurrences of Unique Words
+import <iostream>;
+import <map>;
+import <string>;
+
+int main()
+{
+  std::map<std::string, int> counts{};
+  std::string word{};
+  while (std::cin >> word)
+    ++counts[word];
+  // TODO: Print the results.
+}
+
+In Listing 15-1, the ++ operator increments the count that the program
+stores in counts. In other words, when counts[word] retrieves the
+associated value, it does so in a way that lets you modify the value.
+You can use it as a target for an assignment or apply the increment or
+decrement operator.
+
+For example, suppose you wanted to reset a count to zero.
+
+counts["something"] = 0;
+
+That was easy. Now all that's left to do is to print the results. Like
+vectors, maps also use ranges and iterators, but because an iterator
+refers to a key/value pair, they are a little more complicated to use
+than a vector's iterators.
+
+Pairs
+
+The best way to print the map is to use a range-based for loop to
+iterate over the map. Each map element is a single object that contains
+the key and the value. The key is called first, and the value is called
+second.
+
+Note The two parts of the map element's value are not named key and
+value, because the std::pair type is a generic part of the C++ library.
+The library uses this type in several different places. Thus, the names
+of the parts of a pair are also generic and not tied specifically to
+map.
+
+Use a dot (.) operator to access a member of the pair. To keep things
+simple, print the output as the key, followed by a tab character,
+followed by the count, all on one line. Putting all these pieces
+together, you end up with the finished program, as presented in Listing
+15-2.
+
+Listing 15-2. Printing Word Frequencies
+
+import <iostream>;
+import <map>;
+import <string>;
+
+int main()
+{
+  std::map<std::string, int> counts{};
+
+  // Read words from the standard input and count the number of times
+  // each word occurs.
+  std::string word{};
+  while (std::cin >> word)
+    ++counts[word];
+
+  // For each word/count pair...
+  for (auto element : counts)
+    // Print the word, tab, the count, newline.
+    std::cout << element.first << '\t' << element.second << '\n';
+}
+
+When iterating over the map, you know you will use the .first and
+.second members, so using auto for the key/value pairs helps keep the
+code readable. Let the compiler worry about the details.
+
+Using the knowledge you gained in Exploration 8, you know how to format
+the output nicer by adjusting two neat columns instead of using a tab.
+All that is required is to find the size of the longest key. In order
+to right-align the counts, you can try to determine the number of
+places required by the largest count, or you can simply use a very
+large number, such as 10.
+
+Rewrite Listing 15-2 to line up the output neatly, according to the
+size of the longest key.
+
+Naturally, you will need to write another loop to visit all the
+elements of counts and test the size of each element. In Exploration
+10, you learned that vector has a size() member function that returns
+the number of elements in the vector. Would you be surprised to learn
+that map and string also have size() member functions? The designers of
+the C++ library did their best to be consistent with names. The size()
+member function returns an integer of type size_type.
+
+Compare your program with Listing 15-3.
+
+Listing 15-3. Aligning Words and Counts Neatly
+
+import <iomanip>;
+import <iostream>;
+import <map>;
+import <string>;
+
+int main()
+{
+  std::map<std::string, int> counts{};
+
+  // Read words from the standard input and count the number of times
+  // each word occurs.
+  std::string word{};
+  while (std::cin >> word)
+    ++counts[word];
+
+  // Determine the longest word.
+  std::string::size_type longest{};
+  for (auto element : counts)
+    if (element.first.size() > longest)
+      longest = element.first.size();
+
+  // For each word/count pair...
+  constexpr int count_size{10}; // Number of places for printing the count
+  for (auto element : counts)
+    // Print the word, count, newline. Keep the columns neatly aligned.
+    std::cout << std::format("{1:<{0}}{3:>{2}}\n",
+            longest, element.first, count_size, element.second);
+}
+
+If you want some sample input, try the file explore15.txt, which you
+can download from this book's web site. Notice how the word is
+left-aligned and the count is right-aligned. We expect numbers to be
+right-aligned, and words are customarily left-aligned (in Western
+cultures). And remember constexpr from Exploration 8? That simply means
+count_size is a constant.
+
+Searching in Maps
+
+A map stores its data in sorted order by key. Searching in a map,
+therefore, is pretty fast (logarithmic time). Because a map keeps its
+keys in order, you can use any of the binary search algorithms, but
+even better is to use map's member functions. These member functions
+have the same names as the standard algorithms but can take advantage
+of their knowledge of a map's internal structure. The member functions
+also run in logarithmic time, but with less overhead than the standard
+algorithms.
+
+For example, suppose you want to know how many times the word the
+appears in an input stream. You can read the input and collect the
+counts in the usual way, then call find("the") to see if "the" is in
+the map, and if so, get an iterator that points to its key/value pair.
+If the key is not in the map, find() returns the end() iterator. If the
+key is present, you can extract the count. You have all the knowledge
+and skills you need to solve this problem, so go ahead and write the
+program to print the number of occurrences of the word the. Once again,
+you can use explore15.txt as sample input. If you don't want to use
+redirection, modify the program to read from the explore15.txt file.
+
+What count does your program print when you provide this file as the
+input? The program presented in Listing 15-4 detects ten occurrences.
+
+Listing 15-4. Searching for a Word in a Map
+
+import <iomanip>;
+import <iostream>;
+import <map>;
+import <string>;
+
+int main()
+{
+  std::map<std::string, int> counts{};
+
+  // Read words from the standard input and count the number of times
+  // each word occurs.
+  std::string word{};
+  while (std::cin >> word)
+    ++counts[word];
+
+  auto the{counts.find("the")};
+  if (the == counts.end())
+    std::cout << "\"the\": not found\n";
+  else if (the->second == 1)
+    std::cout << "\"the\": occurs " << the->second << " time\n";
+  else
+    std::cout << "\"the\": occurs " << the->second << " times\n";
+}
+
+Until now, you've used a dot (.) to access a member, such as find() or
+end(). An iterator is different. You have to use an arrow (->) to
+access a member from an iterator, hence the->second. You won't see this
+style much until Exploration 33.
+
+Sometimes you don't want to use auto because you want to make sure the
+human reader knows a variable's type. What is the type of the variable,
+the?
+
+The official type is std::map<std::string, int>::iterator, which is
+quite a keyboard-full. You can see why I prefer auto in this case. But
+there's another solution that preserves the explicit use of a type and
+maintains a sense of brevity: type synonyms, which just happens to be
+the subject of the next Exploration.

@@ -1,0 +1,7 @@
+/** @file snip2402.txt */
+/** Code Snippet 24-2 */
+4
+8
+12
+16
+20

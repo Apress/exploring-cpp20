@@ -1,0 +1,4 @@
+/** @file snip0502.txt */
+/** Code Snippet 5-2 */
+Ray Lischner
+Fine
