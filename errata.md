@@ -13,6 +13,15 @@ On **page 112** [technical accuracy]:
 The book states that "MacOS uses a carriage return ('\x0d')" as a newline character.  This is not true of more modern versions of MacOS, which use a line feed like UNIX.
 
 ***
+
+On **page 236** [code error]:
+ 
+In Exploration 24, the following is wrong 
+
+The comment says it is initializing y to 0 but this is not true. y is not initialized to 0. It is left uninitialized.
+
+***
+
 On **page 300** [Listing 41-4]:
  
 Listing 41-4 (finding the longest string in a data set) appears to have been rewritten to use std::ranges::max(), as the surrounding text refers to a local variable named "string" in a for loop, and the listing contains no such loop or variable.
@@ -21,3 +30,4 @@ Listing 41-4 (finding the longest string in a data set) appears to have been rew
 On **page xx** [Summary of error]:
  
 Details of error here. Highlight key pieces in **bold**.
+
