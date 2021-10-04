@@ -16,7 +16,7 @@ The book states that "MacOS uses a carriage return ('\x0d')" as a newline charac
 
 On **page 236** [code error]:
  
-In Exploration 24, the following is wrong 
+In Exploration 24, the following is wrong:
 
 The comment says it is initializing y to 0 but this is not true. y is not initialized to 0. It is left uninitialized.
 
